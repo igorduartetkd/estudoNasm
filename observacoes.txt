@@ -1,0 +1,67 @@
+	basico:
+{
+
+	global main
+	extern prinf
+	
+	section .data
+	
+	section .text
+	main:
+		xor RAX, RAX
+	ret
+}
+
+REGISTRADORES SUJOS APOS CHAMADAS DO C
+{
+	RAX, R10, R11
+}
+
+REGISTRADORES DE PARAMETROS:
+{
+	RDI, RSI, RDX, RCX, R8, R9
+}
+
+estrutura de repeticao:
+{
+	XOR RBX, RBX			;ZERANDO O ITERADOR
+
+	.INI_FOR
+	CMP RBX, 5			;5 PODE SER VALOR DE N
+	JGE .FIM_FOR			;DESVIO SE FOR MAIOR OU IGUAL
+	
+	XOR RAX, RAX		
+	MOV RDI, ARGUMENTO 		;ARGUMENTO DECLARADO LA ENCIMA
+	LEA RSI, [vetor + 8*RBX]
+	CALL SCANF
+	
+	INC RBX; 			;INCREMENTANDO O ITERADOR
+	JMP .INI_FOR			;DESVIO INCONDICIONAL
+	
+	.FIM_FOR
+	
+}
+
+MULTIPLICACAO
+{
+	; [RDX][RAX] = RAX X ARGUMENTO
+	MUL ARGUMENTO
+	;OU
+	LEA RBX, [RBX * ARGUMENTO]
+}
+
+DIVISAO E RESTO
+{
+	
+}
+
+obs:
+- zerar RAX quase semrpe(xor RAX, RAX)
+
+-resq = 8 bytes
+
+
+
+ler varios numeros depois imprimir todos e a soma
+
+1.651 s
