@@ -6,18 +6,29 @@ leitura db "%d", 0
 escrita db "%d", 10, 0
 
 segment .bss
-soma RESQ 1
-vetor RESQ 5
+n RESQ 1
+argumento RESQ 1
 
 section .text
 main:
-        LEA RBX, [vetor + 8*RCX]    ;MOVE PARA RBX O RESULTADO DA OPERAÇAO ENTRE []
+        mov qword [n], 5        
 
-	MOV qword [vetor + 8], 3
-        
-        MOV RAX, vetor
-        ADD RAX, 8
-        MOV qword RAX, 5
 
-	xor EAX, EAX
-ret
+	XOR RBX, RBX			;ZERANDO O ITERADOR
+
+	.INI_FOR
+	CMP RBX, [n]			;5 PODE SER VALOR DE N
+	JGE .FIM_FOR			;DESVIO SE FOR MAIOR OU IGUAL
+	
+	XOR RAX, RAX		
+	MOV RDI, escrita 		
+	mov rsi, rbx
+	CALL printf
+	
+	INC RBX; 			;INCREMENTANDO O ITERADOR
+	JMP .INI_FOR			;DESVIO INCONDICIONAL
+	
+	.FIM_FOR
+
+    xor rax, rax
+    ret
