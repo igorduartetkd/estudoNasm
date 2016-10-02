@@ -24,28 +24,28 @@ main:
     xor rax, rax
     call scanf
 
-    ;;;;;;;;;;ADICAO;;;;;;;;;;;;;;;
+    ;-------------ADICAO-------------
     mov rax, [x]
     add rax, [y]
     mov [soma], rax
     
-    ;;;;;;;;;;SUBTRACAO;;;;;;;;;;;;
+    ;-------------SUBTRACAO-------------
     mov rax, [x]
     sub rax, [y]
     mov [diferenca], rax
     
-    ;;;;;;;;;;PRODUTO;;;;;;;;;;;;;;;
+    ;-------------PRODUTO-------------
     mov rax, [x]
     mul qword [y]
     mov [produto], rax
     
-    ;;;;;;;;;;QUOCIENTE E RESTO;;;;;;;;;;;;;
+    ;-------------QUOCIENTE E RESTO-------------
     mov rax, [x]
     div qword [y]
     mov [quociente], rax
     mov [resto], rdx
     
-    ;;;;;;;;;;;;;;;IMPRIMINDO A SAIDA;;;;;;;;;;;;;;;;;;;
+    ;-------------IMPRIMINDO A SAIDA-------------
     mov rdi, escrita
     mov rsi, [soma]
     mov rdx, [diferenca]
