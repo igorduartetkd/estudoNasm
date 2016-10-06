@@ -4,7 +4,7 @@ extern printf, scanf
 section .data
 leitura db "%d%d", 0
 escrita db "*", 0
-quebraLinha db "", 10, 0
+quebraLinha db 10, 0
 
 section .bss
 x resq 1
@@ -13,6 +13,7 @@ j resq 1
 
 section .text
 main:
+    mov rbp, rsp; for correct debugging
     ;--------ler x e y----------
     mov rdi, leitura
     mov rsi, x

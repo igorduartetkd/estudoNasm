@@ -63,19 +63,15 @@ main:
     mov rdx, [algarismos]
     add rdx, rax
     mov [algarismos], rdx
-    
     ;outros
     xor rax, rax
     mov al, [vetOutros + rcx]
     mov rdx, [outros]
     add rdx, rax
     mov [outros], rdx
-    
     ;----------I <- I+1 E DESVIO INCONDICIONAL----------
     inc rbx
     jmp .INI_WHILE
-    
-    
     
 .FIM_WHILE
     ;---------IMPRIMINDO O RESULTADO-----------
@@ -88,6 +84,5 @@ main:
     xor rax, rax
     call printf
    
-
     xor rax, rax
     ret
