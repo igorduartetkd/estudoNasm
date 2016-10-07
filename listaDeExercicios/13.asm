@@ -2,8 +2,9 @@ global main
 extern printf, scanf
 
 section .data
-leitura db "%[^]", 0
+leitura db "%[^\]", 0 
 escrita db "%s", 10, 0
+teste dq 2
 
 section .bss
 string resb 100
@@ -44,8 +45,8 @@ main:
     ;metade = (i+1)/2
     inc rbx
     mov rax, rbx
-    mov rdx, 2
-    div rdx
+    xor rdx, rdx
+    div qword [teste]
     mov [metade], rax
     
     ;percorrr ate metade trocando 
@@ -58,18 +59,19 @@ main:
         jae .FIM_FOR_2
         
         ;aux1 = string[i]
-        mov rax, [string + rbx]
-        mov [aux1], rax
+        mov al, [string + rbx]
+        mov [aux1], al
         
-        ;string[i] = string[tam-i]
+        ;string[i] = string[tam-i-1]
         mov rdx, [tam]
         sub rdx, rbx
-        mov rcx, [string + rdx]
-        mov [string + rbx], rcx
+        sub rdx, 1
+        mov al, [string + rdx]
+        mov [string + rbx], al
         
-        ;string[tam-i] = aux1
-        mov rax, [aux1]
-        mov [string + rdx], rax
+        ;string[tam-i-1] = aux1
+        mov al, [aux1]
+        mov [string + rdx], al
         
         ;i++
         inc rbx
