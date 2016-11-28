@@ -1,0 +1,52 @@
+     1                                  global main
+     2                                  extern printf, scanf
+     3                                  
+     4                                  section .data
+     5 00000000 257300                  lerNome db "%s", 0
+     6 00000003 0A496E666F726D6520-     instrucaoNome db 10, "Informe o nome do jogador: ", 0
+     6 0000000C 6F206E6F6D6520646F-
+     6 00000015 206A6F6761646F723A-
+     6 0000001E 2000               
+     7 00000020 256400                  lerNumero db "%d", 0
+     8 00000023 0A496E666F726D6520-     instrucaoQntLinhas db 10, "Informe a quantidade de linhas: ", 0
+     8 0000002C 61207175616E746964-
+     8 00000035 616465206465206C69-
+     8 0000003E 6E6861733A2000     
+     9 00000045 0A496E666F726D6520-     instrucaoQntColunas db 10, "Informe a quantidade de colunas: ", 0
+     9 0000004E 61207175616E746964-
+     9 00000057 61646520646520636F-
+     9 00000060 6C756E61733A2000   
+    10 00000068 0A496E666F726D6520-     instrucaoQntBombas db 10, "Informe a quantidade de bombas: ", 0
+    10 00000071 61207175616E746964-
+    10 0000007A 61646520646520626F-
+    10 00000083 6D6261733A2000     
+    11                                  
+    12                                  section .bss
+    13 00000000 <res 00000014>          nomeJogador resb 20
+    14 00000014 <res 00000008>          qntLinhas resq 1
+    15 0000001C <res 00000008>          qntColunas resq 1
+    16 00000024 <res 00000008>          qntBombas resq 1
+    17 0000002C <res 00000008>          abertos resq 1
+    18                                  
+    19                                  section .text
+    20                                  main:
+    21                                      ;lendo os ajustes
+    22                                      
+    23                                  
+    24                                      ;ler nome do jogador
+    25 00000000 48BF-                       mov rdi, instrucaoNome
+    25 00000002 [0300000000000000] 
+    26 0000000A 4831C0                      xor rax, rax
+    27                                      ;call printf
+    28 0000000D 48BF-                       mov rdi, lerNome
+    28 0000000F [0000000000000000] 
+    29 00000017 48BE-                       mov rsi, nomeJogador
+    29 00000019 [0000000000000000] 
+    30 00000021 4831C0                      xor rax, rax
+    31 00000024 E8(00000000)                call scanf
+    32                                      
+    33                                      ;sortear bombas
+    34                                      
+    35                                      
+    36 00000029 4831C0                  xor rax, rax    
+    37 0000002C C3                      ret
