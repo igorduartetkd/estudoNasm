@@ -178,7 +178,7 @@ main:
         
         ;abertos== qntlinhas * qntcolunas - qntbombas
         mov rdi, 450
-        sub rdi, qntBombas
+        sub rdi, [qntBombas]
         cmp qword [abertos], rdi
         
         jne .INICIO_JOGO
